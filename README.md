@@ -1,4 +1,3 @@
-[![Build Status](https://dev.azure.com/yoong-seonghui/azure-python-django/_apis/build/status/yoongseong.azure-python-django?branchName=master)](https://dev.azure.com/yoong-seonghui/azure-python-django/_build/latest?definitionId=6&branchName=master)
 
 ## Contributing
 
