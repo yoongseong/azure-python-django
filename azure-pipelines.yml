@@ -114,8 +114,7 @@ stages:
           - script: |
               pip install selenium
               pip install pytest
-              pip install pytest-cov
-              pytest tests/functional_tests/ --webAppUrl=https://$(webAppName).azurewebsites.net --junitxml=$(System.DefaultWorkingDirectory)/TestResults/test-results-functional.xml --cov=. --cov-report=xml --cov-report=html
+              pytest tests/functional_tests/ --webAppUrl=https://$(webAppName).azurewebsites.net --junitxml=$(System.DefaultWorkingDirectory)/TestResults/test-results-functional.xml
             workingDirectory: $(Pipeline.Workspace)
             displayName: 'Run functional tests'
           
@@ -124,9 +123,3 @@ stages:
               searchFolder: $(Pipeline.Workspace)
               testResultsFiles: '**/test-*.xml'
             displayName: 'Publish test results'
-
-          - task: PublishCodeCoverageResults@1
-            inputs:
-              codeCoverageTool: Cobertura
-              summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.xml'
-              reportDirectory: '$(System.DefaultWorkingDirectory)/**/htmlcov'
