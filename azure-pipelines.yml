@@ -64,6 +64,7 @@ stages:
         pip install setup
         pip install -r $(projectRoot)/requirements.txt
         pip install pytest
+        pip install pytest-cov
         pytest Tests/unit_tests --junitxml=$(System.DefaultWorkingDirectory)/TestResults/test-results-unit.xml --cov=. --cov-report=xml --cov-report=html
         pip install pycmd
         py.cleanup Tests/
@@ -113,6 +114,7 @@ stages:
           - script: |
               pip install selenium
               pip install pytest
+              pip install pytest-cov
               pytest tests/functional_tests/ --webAppUrl=https://$(webAppName).azurewebsites.net --junitxml=$(System.DefaultWorkingDirectory)/TestResults/test-results-functional.xml --cov=. --cov-report=xml --cov-report=html
             workingDirectory: $(Pipeline.Workspace)
             displayName: 'Run functional tests'
